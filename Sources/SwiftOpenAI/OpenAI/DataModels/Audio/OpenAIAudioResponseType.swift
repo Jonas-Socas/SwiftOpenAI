@@ -6,4 +6,5 @@ public enum OpenAIAudioResponseType: String {
     case aac
     case flac
     case m4a
+    case json
 }
