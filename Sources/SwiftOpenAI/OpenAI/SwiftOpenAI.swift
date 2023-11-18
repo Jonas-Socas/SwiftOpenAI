@@ -23,7 +23,7 @@ protocol OpenAIProtocol {
     
     func createSpeech(model: OpenAITTSModelType, input: String, voice: OpenAIVoiceType, responseFormat: OpenAIAudioResponseType, speed: Double) async throws -> Data?
     
-    func createTranscription(model: OpenAITranscriptionModelType, file: Data, language: String, prompt: String, responseFormat: OpenAIAudioResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error>
+    func createTranscription(model: OpenAITranscriptionModelType, file: Data, fileName: String, language: String, prompt: String, responseFormat: OpenAIAudioResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error>
 }
 
 // swiftlint:disable line_length
@@ -359,8 +359,8 @@ public class SwiftOpenAI: OpenAIProtocol {
               print("Error: \(error)")
           }
     */
-    public func createTranscription(model: OpenAITranscriptionModelType, file: Data, language: String, prompt: String, responseFormat: OpenAIAudioResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error> {
-        try await createTranscriptionRequest(api, apiKey, file, model, language, prompt, responseFormat, temperature)
+    public func createTranscription(model: OpenAITranscriptionModelType, file: Data, fileName: String, language: String, prompt: String, responseFormat: OpenAIAudioResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error> {
+        try await createTranscriptionRequest(api, apiKey, file, fileName, model, language, prompt, responseFormat, temperature)
     }
 }
 // swiftlint:enable line_length

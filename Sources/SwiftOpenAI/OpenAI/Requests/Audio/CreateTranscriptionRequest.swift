@@ -4,6 +4,7 @@ protocol CreateTranscriptionRequestProtocol {
     func execute(api: API,
                  apiKey: String,
                  file: Data,
+                 fileName: String,
                  model: OpenAITranscriptionModelType,
                  language: String,
                  prompt: String,
@@ -15,6 +16,7 @@ final public class CreateTranscriptionRequest: NSObject, CreateTranscriptionRequ
     public typealias Init = (_ api: API,
                              _ apiKey: String,
                              _ file: Data,
+                             _ fileName: String,
                              _ model: OpenAITranscriptionModelType,
                              _ language: String,
                              _ prompt: String,
@@ -32,6 +34,7 @@ final public class CreateTranscriptionRequest: NSObject, CreateTranscriptionRequ
     public func execute(api: API,
                         apiKey: String,
                         file: Data,
+                        fileName: String,
                         model: OpenAITranscriptionModelType,
                         language: String,
                         prompt: String,
@@ -58,7 +61,7 @@ final public class CreateTranscriptionRequest: NSObject, CreateTranscriptionRequ
             body.append("whisper-1\r\n".data(using: .utf8)!)
             
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
-            body.append("Content-Disposition: form-data; name=\"file\"; filename=\"steve.mp4\"\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
             body.append("Content-Type: audio/\(responseFormat)\r\n\r\n".data(using: .utf8)!)
             body.append(file)
             body.append("\r\n".data(using: .utf8)!)
