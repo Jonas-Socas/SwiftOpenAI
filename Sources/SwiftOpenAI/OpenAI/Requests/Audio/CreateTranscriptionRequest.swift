@@ -56,10 +56,7 @@ final public class CreateTranscriptionRequest: NSObject, CreateTranscriptionRequ
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
             body.append("Content-Disposition: form-data; name=\"model\"\r\n\r\n".data(using: .utf8)!)
             body.append("whisper-1\r\n".data(using: .utf8)!)
-            
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
-            body.append("Content-Disposition: form-data; name=\"file\"; filename=\"steve.mp4\"\r\n".data(using: .utf8)!)
-            body.append("Content-Type: audio/mpeg\r\n\r\n".data(using: .utf8)!)
             body.append(file)
             body.append("\r\n".data(using: .utf8)!)
             
