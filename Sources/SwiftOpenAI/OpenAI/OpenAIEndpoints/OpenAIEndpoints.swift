@@ -19,9 +19,9 @@ enum OpenAIEndpoints {
 
     case moderations(input: String)
 
-    case createSpeech(model: OpenAITTSModelType, input: String, voice: OpenAIVoiceType, responseFormat: OpenAIAudioResponseType, speed: Double)
+    case createSpeech(model: OpenAITTSModelType, input: String, voice: OpenAIVoiceType, responseFormat: OpenAIAudioCreateSpeechResponseType, speed: Double)
     
-    case createTranscription(file: Data, model: OpenAITranscriptionModelType, language: String, prompt: String, responseFormat: OpenAIAudioResponseType, temperature: Double)
+    case createTranscription(file: Data, model: OpenAITranscriptionModelType, language: String, prompt: String, responseFormat: OpenAIAudioCreateTranscriptionResponseType, temperature: Double)
 
     public var endpoint: Endpoint {
         switch self {

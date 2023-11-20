@@ -21,9 +21,9 @@ protocol OpenAIProtocol {
 
     func moderations(input: String) async throws -> ModerationDataModel?
     
-    func createSpeech(model: OpenAITTSModelType, input: String, voice: OpenAIVoiceType, responseFormat: OpenAIAudioResponseType, speed: Double) async throws -> Data?
+    func createSpeech(model: OpenAITTSModelType, input: String, voice: OpenAIVoiceType, responseFormat: OpenAIAudioCreateSpeechResponseType, speed: Double) async throws -> Data?
     
-    func createTranscription(model: OpenAITranscriptionModelType, file: Data, fileName: String, language: String, prompt: String, responseFormat: OpenAIAudioResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error>
+    func createTranscription(model: OpenAITranscriptionModelType, file: Data, fileName: String, language: String, prompt: String, responseFormat: OpenAIAudioCreateTranscriptionResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error>
 }
 
 // swiftlint:disable line_length
@@ -322,7 +322,7 @@ public class SwiftOpenAI: OpenAIProtocol {
               print("Error: \(error)")
           }
     */
-    public func createSpeech(model: OpenAITTSModelType, input: String, voice: OpenAIVoiceType, responseFormat: OpenAIAudioResponseType, speed: Double) async throws -> Data? {
+    public func createSpeech(model: OpenAITTSModelType, input: String, voice: OpenAIVoiceType, responseFormat: OpenAIAudioCreateSpeechResponseType, speed: Double) async throws -> Data? {
         try await createSpeechRequest(api, apiKey, model, input, voice, responseFormat, speed)
     }
     
@@ -359,7 +359,7 @@ public class SwiftOpenAI: OpenAIProtocol {
               print("Error: \(error)")
           }
     */
-    public func createTranscription(model: OpenAITranscriptionModelType, file: Data, fileName: String, language: String, prompt: String, responseFormat: OpenAIAudioResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error> {
+    public func createTranscription(model: OpenAITranscriptionModelType, file: Data, fileName: String, language: String, prompt: String, responseFormat: OpenAIAudioCreateTranscriptionResponseType, temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error> {
         try await createTranscriptionRequest(api, apiKey, file, fileName, model, language, prompt, responseFormat, temperature)
     }
 }

@@ -5,7 +5,7 @@ struct CreateTranscriptionEndpoint: Endpoint {
     private let model: OpenAITranscriptionModelType
     private let language: String
     private let prompt: String
-    private let responseFormat: OpenAIAudioResponseType
+    private let responseFormat: OpenAIAudioCreateTranscriptionResponseType
     private let temperature: Double
     
     var method: HTTPMethod {
@@ -18,7 +18,7 @@ struct CreateTranscriptionEndpoint: Endpoint {
          model: OpenAITranscriptionModelType,
          language: String = "en",
          prompt: String = "",
-         responseFormat: OpenAIAudioResponseType,
+         responseFormat: OpenAIAudioCreateTranscriptionResponseType,
          temperature: Double = 0.0) {
         self.file = file
         self.model = model

@@ -6,7 +6,7 @@ protocol CreateSpeechRequestProtocol {
                  model: OpenAITTSModelType,
                  input: String,
                  voice: OpenAIVoiceType,
-                 responseFormat: OpenAIAudioResponseType,
+                 responseFormat: OpenAIAudioCreateSpeechResponseType,
                  speed: Double) async throws -> Data?
 }
 
@@ -16,7 +16,7 @@ final public class CreateSpeechRequest: CreateSpeechRequestProtocol {
                              _ model: OpenAITTSModelType,
                              _ input: String,
                              _ voice: OpenAIVoiceType,
-                             _ responseFormat: OpenAIAudioResponseType,
+                             _ responseFormat: OpenAIAudioCreateSpeechResponseType,
                              _ speed: Double) async throws -> Data?
 
     public init() { }
@@ -26,7 +26,7 @@ final public class CreateSpeechRequest: CreateSpeechRequestProtocol {
                         model: OpenAITTSModelType,
                         input: String,
                         voice: OpenAIVoiceType,
-                        responseFormat: OpenAIAudioResponseType,
+                        responseFormat: OpenAIAudioCreateSpeechResponseType,
                         speed: Double) async throws -> Data? {
         var endpoint = OpenAIEndpoints.createSpeech(model: model, input: input, voice: voice, responseFormat: responseFormat, speed: speed).endpoint
         api.routeEndpoint(&endpoint, environment: OpenAIEnvironmentV1())

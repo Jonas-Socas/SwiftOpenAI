@@ -8,7 +8,7 @@ protocol CreateTranscriptionRequestProtocol {
                  model: OpenAITranscriptionModelType,
                  language: String,
                  prompt: String,
-                 responseFormat: OpenAIAudioResponseType,
+                 responseFormat: OpenAIAudioCreateTranscriptionResponseType,
                  temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error>
 }
 
@@ -20,7 +20,7 @@ final public class CreateTranscriptionRequest: NSObject, CreateTranscriptionRequ
                              _ model: OpenAITranscriptionModelType,
                              _ language: String,
                              _ prompt: String,
-                             _ responseFormat: OpenAIAudioResponseType,
+                             _ responseFormat: OpenAIAudioCreateTranscriptionResponseType,
                              _ temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error>
     
     private var urlSession: URLSession?
@@ -38,7 +38,7 @@ final public class CreateTranscriptionRequest: NSObject, CreateTranscriptionRequ
                         model: OpenAITranscriptionModelType,
                         language: String,
                         prompt: String,
-                        responseFormat: OpenAIAudioResponseType,
+                        responseFormat: OpenAIAudioCreateTranscriptionResponseType,
                         temperature: Double) async throws -> AsyncThrowingStream<CreateTranscriptionDataModel, Error> {
         
         return AsyncThrowingStream<CreateTranscriptionDataModel, Error> { continuation in

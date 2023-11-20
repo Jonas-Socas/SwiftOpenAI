@@ -4,7 +4,7 @@ struct CreateSpeechEndpoint: Endpoint {
     private let model: OpenAITTSModelType
     private let input: String
     private let voice: OpenAIVoiceType
-    private let responseFormat: OpenAIAudioResponseType
+    private let responseFormat: OpenAIAudioCreateSpeechResponseType
     private let speed: Double
     
     var method: HTTPMethod {
@@ -16,7 +16,7 @@ struct CreateSpeechEndpoint: Endpoint {
     init(model: OpenAITTSModelType,
          input: String,
          voice: OpenAIVoiceType,
-         responseFormat: OpenAIAudioResponseType,
+         responseFormat: OpenAIAudioCreateSpeechResponseType,
          speed: Double) {
         self.model = model
         self.input = input

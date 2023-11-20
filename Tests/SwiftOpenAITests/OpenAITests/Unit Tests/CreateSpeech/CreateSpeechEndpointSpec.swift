@@ -6,7 +6,7 @@ final class CreateSpeechEndpointSpec: XCTestCase {
         let model: OpenAITTSModelType = .tts(.tts1)
         let input = "Please create an audio with this input"
         let voice: OpenAIVoiceType = .alloy
-        let responseFormat: OpenAIAudioResponseType = .mp3
+        let responseFormat: OpenAIAudioCreateSpeechResponseType = .mp3
         let speed = 1.0
         
         let sut = OpenAIEndpoints.createSpeech(
